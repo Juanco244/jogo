@@ -1,0 +1,45 @@
+class Cinematica extends Phaser.Scene {
+    constructor() {
+        super('Cinematica');
+    }
+
+    preload() {
+        // Cargar imágenes, texto o audio para la cinemática si quieres
+        this.load.image('fondo', 'cinematica.png');
+    }
+
+    create() {
+        this.add.image(-10, -10, 'fondo');
+
+        this.add.text(100, 100, 'Comienza la cinemática...', {
+            fontSize: '64px',
+            color: '#ffffff'
+        });
+
+        // Volver al juego después de unos segundos o al presionar una tecla
+        this.time.delayedCall(5000, () => {
+            this.scene.start('Example'); // Vuelve al juego
+        });
+
+        this.input.keyboard.once('keydown-SPACE', () => {
+            this.scene.start('Example');
+        });
+    }
+}
+
+create ()
+   {
+    this.player = this.physics.add.sprite(100, 100, 'player');
+
+    // Zona para activar la cinemática
+    this.cinematicTrigger = this.physics.add.staticImage(400, 200, null).setSize(64, 64);
+    this.cinematicTrigger.visible = this.showDebug;
+
+    // Activar cinemática al tocar zona
+    this.physics.add.overlap(this.player, this.cinematicTrigger, this.triggerCinematic, null, this);
+}
+triggerCinematic(player, trigger)
+{
+    this.scene.start('Cinematica');
+}
+
