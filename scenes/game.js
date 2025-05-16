@@ -353,7 +353,7 @@ this.add
 
 // Esperar tecla espacio para redirigir al HTML de inicio
     this.input.keyboard.once("keydown-SPACE", () => {
-      window.location.href = "./index.html"; // Cambia esto al nombre real de tu archivo HTML
+      window.location.href = "C:\Users\Usuario\Documents\GitHub\jogo\index.html"; // Cambia esto al nombre real de tu archivo HTML
     });
 
 } else if (this.vidaJugador === 2) {
